@@ -130,8 +130,9 @@ GameObject:
   m_Component:
   - component: {fileID: 66272955}
   - component: {fileID: 66272954}
+  - component: {fileID: 66272956}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,13 +198,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66272953}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.14453496, w: 0.9894997}
-  m_LocalPosition: {x: 1.6, y: 0.15, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.37, y: 1.82, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.621}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &66272956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66272953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c02ed59abd2a7d4eb01354e6fa7938f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +388,7 @@ Transform:
   m_GameObject: {fileID: 1594324221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.14453496, w: 0.9894997}
-  m_LocalPosition: {x: 2.13, y: 0.15, z: 0}
+  m_LocalPosition: {x: 3.36, y: 1.89, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
