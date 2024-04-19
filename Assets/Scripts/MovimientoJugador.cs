@@ -26,9 +26,10 @@ public class MovimientoJugador : MonoBehaviour
     {
 
 
-        if(Input.GetKey(KeyCode.Space) && detectorSuelo.enSuelo)
+        if(Input.GetKeyDown(KeyCode.Space) && detectorSuelo.enSuelo)
         {
             rigidbody.AddForceY(fuerzaSalto);
+            detectorSuelo.enSuelo = false;
         }
 
 
