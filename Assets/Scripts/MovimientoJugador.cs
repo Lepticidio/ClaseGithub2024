@@ -6,15 +6,22 @@ public class MovimientoJugador : MonoBehaviour
 {
     public float velocidad = 2, fuerzaSalto = 10;
 
+    public AudioSource fuente;
     public Animator animator;
     public Rigidbody2D rigidbody;
     public DetectorSuelo detectorSuelo;
+    public Transform[] checkpoints;
 
     // Start is called before the first frame update
     void Start()
     {
 
+        int indexCheckpoint = PlayerPrefs.GetInt("Checkpoints", 0);
 
+        if(indexCheckpoint > 0)
+        {
+            transform.position = checkpoints[indexCheckpoint - 1].position;
+        }
         
     }
 
@@ -50,6 +57,16 @@ public class MovimientoJugador : MonoBehaviour
 
         bool estaCaminando = velocidadHorizontal != Vector3.zero;
         
+        if(estaCaminando && !fuente.isPlaying)
+        {
+            //fuente.volume = 1;            
+            fuente.Play();
+        }
+        else if (!estaCaminando && fuente.isPlaying)
+        {
+            //fuente.volume = 0;
+            fuente.Stop();
+        }
 
 
         animator.SetBool("Walking", estaCaminando);

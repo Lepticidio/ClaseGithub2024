@@ -8,6 +8,11 @@ public class FinDeJuego : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Volver()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+
 
     public void Reiniciar()
     {

@@ -22,7 +22,17 @@ public class MovimientoEnemigo : MonoBehaviour
         Vector3 nuevaPosicion =  new Vector3 (waypointArray[waypointActual].position.x, transform.position.y);
 
 
-        transform.position += (nuevaPosicion - transform.position).normalized * velocidad * Time.deltaTime;
+        Vector3 movimiento = (nuevaPosicion - transform.position).normalized * velocidad * Time.deltaTime;
+
+        if(Mathf.Sign(movimiento.x)!= Mathf.Sign(transform.localScale.x))
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+
+        transform.position += movimiento;
+
+
+
 
         if(Vector3.Distance(nuevaPosicion, transform.position) < distanciaMinima)
         {

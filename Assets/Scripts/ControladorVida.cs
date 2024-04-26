@@ -4,14 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ControladorVida : MonoBehaviour
 {
-    public float vida = 100, vidaMaxima = 100;
+    public float vida = 100, vidaMaxima = 100, minYPos;
     public Image barraVida;
     public Animator animador;
     public FinDeJuego fin;
+    public Transform playerTrans;
 
     // Update is called once per frame
     void Update()
     {
+        if(playerTrans.position.y < minYPos)
+        {
+            vida = 0;
+        }
+
+
         barraVida.transform.localScale = new Vector2(vida/vidaMaxima, 1 );
         if (vida > vidaMaxima)
         {
