@@ -11,4 +11,12 @@ public class CheckPoint : MonoBehaviour
             PlayerPrefs.SetInt("Checkpoints", 1);
         }
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
 }
