@@ -7,6 +7,7 @@ public class Item
 {
     public string nombre;
     public Sprite sprite;
+    public float durabilidad = 100;
 }
 
 public class ObjetoRecogible : MonoBehaviour

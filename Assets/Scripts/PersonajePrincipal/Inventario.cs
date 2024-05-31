@@ -6,12 +6,17 @@ using UnityEngine.UI;
 public class Inventario : MonoBehaviour
 {
 
-    public int objetoSeleccionado = 0;
+    public int objetoSeleccionado = 0, objetoEquipado = -1;
 
     public List<Item> items = new List<Item>();
 
     public List<Image> iconos = new List<Image>();
     public List<Image> marcosDeSeleccion = new List<Image>();
+
+
+    public GameObject equipamiento;
+
+    public Transform huesoMano;
 
     public void AddItem(Item item)
     {
@@ -25,6 +30,16 @@ public class Inventario : MonoBehaviour
         {
             string nombre = items[objetoSeleccionado].nombre;
             items.RemoveAt(objetoSeleccionado);
+
+            if(objetoEquipado > objetoSeleccionado)
+            {
+                objetoEquipado--;
+            }
+            else
+            {
+                objetoEquipado = -1;
+                Desequipar();
+            }
             ActualizarInterfaz();
 
             GameObject prefabObjeto = Resources.Load<GameObject>("Prefabs/Objetos/" + nombre);
@@ -40,7 +55,14 @@ public class Inventario : MonoBehaviour
             if(items.Count > i)
             {
                 iconos[i].sprite = items[i].sprite;
-                iconos[i].color = Color.white;
+                if(i == objetoEquipado)
+                {
+                    iconos[i].color = new Color(1f, 1f, 0f);
+                }
+                else
+                {
+                    iconos[i].color = Color.white;
+                }
             }
             else
             {
@@ -67,5 +89,36 @@ public class Inventario : MonoBehaviour
             SoltarActual();
         }
         marcosDeSeleccion[objetoSeleccionado].gameObject.SetActive(true);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Equipar();
+        }
+    }
+
+    public void Desequipar()
+    {
+
+        Destroy(equipamiento.gameObject);
+    }
+    public void Equipar()
+    {
+
+        objetoEquipado = objetoSeleccionado;
+
+        Desequipar();
+
+        if (objetoSeleccionado < items.Count)
+        {
+            string nombre = items[objetoSeleccionado].nombre;
+
+            GameObject prefabObjeto = Resources.Load<GameObject>("Prefabs/Equipamiento/" + nombre);
+
+            equipamiento = Instantiate(prefabObjeto, huesoMano.position, huesoMano.rotation);
+            equipamiento.transform.Rotate(Vector3.forward, 90);
+            equipamiento.transform.SetParent(huesoMano);
+        }
+        ActualizarInterfaz();
+
     }
 }
