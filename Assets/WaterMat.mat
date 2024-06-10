@@ -25,11 +25,13 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _AlturaOlas: 0.14
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Escala: 128.8
     - _EscalaOlas: 64.07
     - _Velocidad: 1
+    - _VelocidadOlas: 0.01
     m_Colors:
     - _ColorBase: {r: 0.26753289, g: 0.62436956, b: 0.8490566, a: 1}
   m_BuildTextureStacks: []
